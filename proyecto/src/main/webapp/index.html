@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Banner HTML</title>
+    <style>
+        /* Estilos opcionales para el banner */
+        header {
+            background-color: #ffd700; /* Cambio de color a dorado */
+            color: #000; /* Color del texto cambiado a negro */
+            padding: 20px; /* Espaciado interno */
+            text-align: center; /* Alineación del texto */
+            transition: height 0.5s ease; /* Transición suave en la altura */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra */
+        }
+
+        /* Estilo para ocultar el banner */
+        .oculto {
+            display: none; /* Oculta el banner */
+        }
+
+        /* Estilo para el contenedor del botón */
+        .boton-container {
+            text-align: center; /* Centra el contenido horizontalmente */
+            margin-top: 20px; /* Espaciado superior */
+        }
+
+        /* Estilo para el botón */
+        .boton {
+            background-color: #007bff; /* Color de fondo azul */
+            color: #fff; /* Color del texto blanco */
+            border: none; /* Sin borde */
+            border-radius: 20px; /* Bordes redondeados */
+            padding: 10px 20px; /* Espaciado interno */
+            cursor: pointer; /* Cursor de puntero */
+            transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+        }
+
+        /* Cambio de color de fondo del botón al pasar el mouse sobre él */
+        .boton:hover {
+            background-color: #0056b3; /* Nuevo color de fondo azul */
+        }
+    </style>
+</head>
+<body>
+
+<header id="banner">
+    <h1>¡Bienvenido a nuestro sitio Web!</h1>
+    <p>Proyecto de Compiladores</p>
+    <img src="resources/owo.jpg" alt="Banner de promoción" width="1240" height="1080">
+</header>
+
+<div class="boton-container">
+    <button class="boton" onclick="toggleBanner()">Cerrar banner</button>
+</div>
+
+<button onclick="llamarServlet()">Llamar Servlet</button>
+<div id="resultado"></div>
+
+<script>
+    function toggleBanner() {
+        var banner = document.getElementById("banner");
+        banner.classList.toggle("oculto");
+        var boton = document.querySelector(".boton");
+        if (banner.classList.contains("oculto")) {
+            boton.textContent = "Abrir banner";
+        } else {
+            boton.textContent = "Cerrar banner";
+        }
+    }
+
+    function llamarServlet() {
+        fetch('/openfile')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('resultado').innerText = data;
+            })
+            .catch(error => {
+                console.error('Error al llamar al Servlet:', error);
+            });
+    }
+</script>
+
+</body>
+</html>
