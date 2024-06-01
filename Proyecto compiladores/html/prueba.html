@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compilador 1.0</title>
+    <link rel="stylesheet" href="./../css/prueba.css">
+</head>
+<body>
+    <header>
+        <h1>Compiladores</h1>
+        <nav>
+            <ul>
+                <li><a href="./../index.html">Inicio</a></li>
+                <li><a href="2MANUAL TUTO+.pdf" download>Manual de usuario</a></li>
+                <li><a href="manual Tuto++.pdf" download>Documentación</a></li>
+                <li><a href="https://github.com/jelantan/PROYECTO-COMPILADORES" target="_blank">Github</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="compiler-container">
+            <div class="compiler">
+                <div class="line-numbers" id="lineNumbers"></div>
+                <textarea id="codeInput" class="code-input" placeholder="Ingrese el código fuente a compilar" oninput="updateLineNumbers(); highlightKeywords()" onkeydown="handleKeyDown(event)"></textarea>
+                <pre id="highlightedCode" oninput="updateLineNumbers()" onkeydown="handleKeyDown(event)"></pre>
+            </div>
+            
+            <div class="options">
+                <button class="compile-btn" onclick="compile()">Compilar</button>
+                <input type="file" id="fileInput" style="display: none;" accept=".eve" onchange="handleFile()">
+                <label for="fileInput" class="upload-btn">Cargar Archivo</label>
+                <button class="save-btn" onclick="saveFile()">Guardar Archivo.eve</button>
+            </div>
+        </div>
+
+        <div class="tables-container">
+            <div class="view-buttons">
+                <button class="view-btn" onclick="showView('tokensTable')">Ver Tokens</button>
+                <button class="view-btn" onclick="showView('lexicalErrorsTable')">Ver Errores Léxicos</button>
+                <button class="view-btn" onclick="showView('syntacticErrorsTable')">Ver Errores Sintácticos</button>
+                <button class="view-btn" onclick="showView('syntacticAnalysis')">Ver Analizador Sintáctico</button>
+            </div>
+
+            <div class="table-container" id="tokensTable">
+                <table>
+                    <caption>TOKENS</caption>
+                    <thead>
+                        <tr>
+                            <th>Linea</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>.</td>
+                            <td>.</td>
+                            <td>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-container" id="lexicalErrorsTable" style="display:none;">
+                <table>
+                    <caption>ERRORES LÉXICOS</caption>
+                    <thead>
+                        <tr>
+                            <th>Linea</th>
+                            <th>Error</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>.</td>
+                            <td>.</td>
+                            <td>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container" id="syntacticErrorsTable" style="display:none;">
+                <table>
+                    <caption>ERRORES SINTÁCTICOS</caption>
+                    <thead>
+                        <tr>
+                            <th>Linea</th>
+                            <th>Error</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>.</td>
+                            <td>.</td>
+                            <td>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-container" id="syntacticAnalysis" style="display:none;">
+                <table>
+                    <caption>RESULTADO SINTÁCTICO</caption>
+                    <thead>
+                        <tr>
+                            <th>Linea</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>.</td>
+                            <td>.</td>
+                            <td>.</td>
+                        </tr>
+                    </tbody>
+                    <tbody id="syntacticOutput"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="./../js/cargarCodigo.js"></script>
+    <script src="./../js/compiler.js"></script>
+    <script src="./../js/areaTexto.js"></script>
+    <script>
+        function showView(viewId) {
+            document.getElementById('tokensTable').style.display = 'none';
+            document.getElementById('lexicalErrorsTable').style.display = 'none';
+            document.getElementById('syntacticErrorsTable').style.display = 'none';
+            document.getElementById('syntacticAnalysis').style.display = 'none';
+            document.getElementById(viewId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

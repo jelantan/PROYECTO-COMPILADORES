@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compilador 1.0</title>
+  <link rel="stylesheet" href="./../css/compilador.css">
+</head>
+<body>
+  <header>
+    <h1>Compiladores</h1>
+    <nav>
+      <ul>
+        <li><a href="./../index.html">Inicio</a></li>
+        <li><a href="2MANUAL TUTO+.pdf" download>Manual de usuario</a></li>
+        <li><a href="manual Tuto++.pdf" download>Documentación</a></li>
+        <li><a href="https://github.com/jelantan/PROYECTO-COMPILADORES" target="_blank">Github</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="compiler-container">
+    <div class="compiler">
+      <div class="line-numbers" id="lineNumbers"></div>
+      <textarea id="codeInput" class="code-input" placeholder="Ingrese el código fuente a compilar" oninput="updateLineNumbers(); highlightKeywords()" onkeydown="handleKeyDown(event)"></textarea>
+      <pre id="highlightedCode" oninput="updateLineNumbers()" onkeydown="handleKeyDown(event)"></pre>
+  </div>
+  
+  <div class="options">
+    <button class="compile-btn" onclick="compile()">Compilar</button>
+    <input type="file" id="fileInput" style="display: none;" accept=".eve" onchange="handleFile()">
+    <label for="fileInput" class="upload-btn">Cargar Archivo</label>
+    <button class="save-btn" onclick="saveFile()">Guardar Archivo.eve</button>
+  </div>
+
+
+  <div class="output">SALIDA DEL PROGRAMA</div>
+  
+
+    <div class="table-container">
+      <table id="tokensTable" border="2" style="text-align: center; width: 100%; height: 90%;">
+
+        <caption>TOKENS</caption>
+        <thead>
+            <tr>
+                <th>Linea</th>
+                <th>Token</th>
+                <th>Expresion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>  .</td>
+                <td>  .</td>
+                <td>  .</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
+
+
+
+
+  <script src="./../js/cargarCodigo.js"></script>
+  <script src="./../js/compiler.js"></script>
+  <script src="./../js/areaTexto.js"></script>
+
+</body>
+</html>
